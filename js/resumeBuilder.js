@@ -1,16 +1,75 @@
 var bio = {
   name: "Michelle Levine",
   role: "Full Stack Web Developer",
-  contactInfo: {
+  contacts: {
+    mobile: "(503) 555-1234",
+    email: "michelle@email.com",
     github: "michellejl",
     twitter: "@michellejlevine",
     location: "Portland, Oregon",
     blog: "michellejl.com"
   },
-  picture: "images/me.jpg",
   welcomeMessage: "Hello World! I’m Michelle, a full stack web developer currently in Portland, Oregon. Nothing excites me more than immersing myself in a good challenge or a great book. When not coding, I am most likely spending my time on some sort of creative project, getting involved in the local tech community, or exploring the world around me with my trusty Nikon camera.",
-  skills: ["HTML", "CSS(Sass)", "JavaScript", "jQuery", "Node.js", "Gulp.js", "Git", "Adobe Creative Suite", "Sketch", "Bootstrap", "Zurb Foundation", "Responsive Web Design", "Backbone.js", "Underscore.js", "Angular.js 2", "SQL", "PHP", "WordPress", "Photography", "Graphic Design", "Grunt.js", "Bash Scripting" ]
+  skills: [
+    "HTML", "CSS(Sass)", "JavaScript", "jQuery", "Node.js", "Gulp.js", "Git", "Adobe Creative Suite", "Sketch", "Bootstrap", "Zurb Foundation", "Responsive Web Design", "Backbone.js", "Underscore.js", "Angular.js 2", "SQL", "PHP", "WordPress", "Photography", "Graphic Design", "Grunt.js", "Bash Scripting"
+  ],
+  biopic: "images/me.jpg",
+  display: function() {
+
+    // Adds name and role
+    prependInfo('#header', [HTMLheaderRole, bio.role])
+    prependInfo('#header', [HTMLheaderName, bio.name])
+
+    // Adds contact information
+    var contactsArray = [
+      [HTMLmobile, bio.contacts.mobile],
+      [HTMLemail, bio.contacts.email],
+      [HTMLgithub, bio.contacts.github],
+      [HTMLtwitter, bio.contacts.github],
+      [HTMLlocation, bio.contacts.github]
+    ]
+    // Adds blog contact information IF it has been provided
+    if (bio.contacts.blog) { contactsArray.push([HTMLblog, bio.contacts.blog]) }
+
+    appendInfo('#topContacts', contactsArray)
+    // TODO: use HTMLcontactGeneric from helper.js
+    // to add other contact information if provided.
+
+  }
 }
+
+// dataArray should be an array or a multidimensional array containing the
+// template and the data
+function appendInfo(element, dataArray) {
+  console.log(typeof dataArray)
+  if (dataArray.length === 2 && typeof dataArray[0] !== 'object') {
+    $(element).append(dataArray[0].replace('%data%', dataArray[1]))
+  } else {
+    for (var i = 0; i < dataArray.length; i++) {
+      $(element).append(dataArray[i][0].replace('%data%', dataArray[i][1]))
+    }
+  }
+}
+
+function prependInfo(element, dataArray) {
+  if (dataArray.length === 2 && typeof dataArray[0] !== 'object') {
+    $(element).prepend(dataArray[0].replace('%data%', dataArray[1]))
+  } else {
+    for (var i = 0; i < dataArray.length; i++) {
+      $(element).prepend(dataArray[i][0].replace('%data%', dataArray[i][1]))
+    }
+  }
+}
+// TODO: combine prependInfo() and appendInfo() into formatAndDisplay()
+// function formatAndDisplay() {}
+
+
+function displayAll() {
+  bio.display();
+}
+
+displayAll();
+
 
 var work = {
   jobs: [{
@@ -162,7 +221,7 @@ function displayWork() {
   })
 }
 
-displayWork()
+// displayWork()
 
 $(document).click(function(loc) {
   var x = loc.pageX
@@ -171,17 +230,13 @@ $(document).click(function(loc) {
 });
 
 
-
-
-
-
 /*
-var formattedName = HTMLheaderName.replace("%data%", bio.name)
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role)
-var formattedGithub = HTMLgithub.replace("%data%", bio.contactInfo.github)
-var formattedTwitter = HTMLtwitter.replace("%data%", bio.contactInfo.twitter)
-var formattedBlog = HTMLblog.replace("%data%", bio.contactInfo.blog)
-var formattedLocation = HTMLlocation.replace("%data%", bio.contactInfo.location)
+// var formattedName = HTMLheaderName.replace("%data%", bio.name)
+// var formattedRole = HTMLheaderRole.replace("%data%", bio.role)
+// var formattedGithub = HTMLgithub.replace("%data%", bio.contactInfo.github)
+// var formattedTwitter = HTMLtwitter.replace("%data%", bio.contactInfo.twitter)
+// var formattedBlog = HTMLblog.replace("%data%", bio.contactInfo.blog)
+// var formattedLocation = HTMLlocation.replace("%data%", bio.contactInfo.location)
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture)
 var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage)
 
@@ -221,12 +276,12 @@ var formattedSchoolEducation = schoolEducation.map(function(school) {
   return formattedSchool
 })
 
-$("#header").prepend(formattedRole)
-$("#header").prepend(formattedName)
-$("#topContacts").append(formattedGithub)
-$("#topContacts").append(formattedTwitter)
-$("#topContacts").append(formattedBlog)
-$("#topContacts").append(formattedLocation)
+// $("#header").prepend(formattedRole)
+// $("#header").prepend(formattedName)
+// $("#topContacts").append(formattedGithub)
+// $("#topContacts").append(formattedTwitter)
+// $("#topContacts").append(formattedBlog)
+// $("#topContacts").append(formattedLocation)
 $("#header").append(formattedBioPic)
 $("#header").append(formattedWelcomeMessage)
 $("#header").append(HTMLskillsStart)
