@@ -148,6 +148,34 @@ var education = {
     }]
 }
 
+function displayBio() {}
+
+function displayWork() {
+  var workExperience = work.jobs
+  workExperience.forEach(function(position) {
+    var formattedPosition = HTMLworkEmployer.replace("%data%", position.employer)
+                          + HTMLworkTitle.replace("%data%", position.title)
+                          + HTMLworkDates.replace("%data%", position.dates)
+                          + HTMLworkLocation.replace("%data%", position.location)
+                          + HTMLworkDescription.replace("%data%", position.description)
+    $("#workExperience").append($(HTMLworkStart).append(formattedPosition))
+  })
+}
+
+displayWork()
+
+$(document).click(function(loc) {
+  var x = loc.pageX
+  var y = loc.pageY
+  logClicks(x, y)
+});
+
+
+
+
+
+
+/*
 var formattedName = HTMLheaderName.replace("%data%", bio.name)
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role)
 var formattedGithub = HTMLgithub.replace("%data%", bio.contactInfo.github)
@@ -160,19 +188,19 @@ var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessag
 var mySkills = bio.skills
 var formattedSkills = mySkills.map(function(skill) {
   formattedSkill = HTMLskills.replace("%data%", skill)
-  formattedSkill = $(HTMLworkStart).append(formattedSkill)
+  $("#skills").append(formattedSkill)
   return formattedSkill
 })
 
-var workExperience = work.jobs
-var formattedWork = workExperience.map(function(position) {
-  formattedPosition = HTMLworkEmployer.replace("%data%", position.employer)
-                    + HTMLworkTitle.replace("%data%", position.title)
-                    + HTMLworkDates.replace("%data%", position.dates)
-                    + HTMLworkLocation.replace("%data%", position.location)
-                    + HTMLworkDescription.replace("%data%", position.description)
-  return formattedPosition
-})
+// var workExperience = work.jobs
+// var formattedWork = workExperience.map(function(position) {
+//   formattedPosition = HTMLworkEmployer.replace("%data%", position.employer)
+//                     + HTMLworkTitle.replace("%data%", position.title)
+//                     + HTMLworkDates.replace("%data%", position.dates)
+//                     + HTMLworkLocation.replace("%data%", position.location)
+//                     + HTMLworkDescription.replace("%data%", position.description)
+//   return formattedPosition
+// })
 
 var onlineEducation = education.online
 var formattedOnlineEducation = onlineEducation.map(function(course) {
@@ -210,10 +238,12 @@ formattedSchoolEducation.forEach(function(school) {
 
 $("#education").append(HTMLonlineClasses)
 
-formattedWork.forEach(function(position) {
-  $("#workExperience").append($(HTMLworkStart).append(position))
-})
+// formattedWork.forEach(function(position) {
+//   $("#workExperience").append($(HTMLworkStart).append(position))
+// })
 
 formattedOnlineEducation.forEach(function(course) {
   $("#education").append($(HTMLschoolStart).append(course))
 })
+
+*/
