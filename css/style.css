@@ -26,7 +26,7 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #f56223;
   line-height: 48px;
   display: inline;
 }
@@ -34,9 +34,13 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999;
+  color: #f56223;
   line-height: 29px;
   padding: 10px;
+  border: solid #f56223;
+  border-width: 5px 0;
+  margin: 0 0 25px;
+  background-color: #4a4a4a;
 }
 
 @media screen and (max-width: 600px) {
@@ -68,6 +72,9 @@ h5 {
 
 }
 
+#role {
+  color: white;
+}
 
 .date-text {
   font-style: italic;
@@ -93,7 +100,7 @@ p {
 }
 
 a {
-  color: #1199c3;
+  color: #06679e;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -107,16 +114,16 @@ a {
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #f56223;
   display: none;
 }
 
 .orange {
-  background-color: #f5ae23;
+  background-color: #f56223;
 }
 
 .orange-text {
-  color: #f5ae23;
+  color: #f56223;
 }
 
 .white-text {
@@ -125,7 +132,7 @@ a {
 }
 
 .gray {
-  background-color: #f3f3f3;
+  background-color: #fefefe;
   padding-bottom: 10px;
   clear: both;
 }
@@ -134,9 +141,10 @@ a {
   background-color: #4a4a4a;
 }
 
-/* TODO: Replace with image later */
 #header {
   background-color: #484848;
+  background-image: url(../images/code.jpg);
+  background-size: cover;
 }
 
 .flex-box {
@@ -194,12 +202,24 @@ img {
   padding: 10px;
 }
 
+#projects {
+  background-color: #ececec;
+}
+
+.project-image {
+  width: 330px;
+  height: 200px;
+  padding: 0;
+  margin: 10px 10px 10px 0;
+}
+
 span {
   padding: 5px;
 }
 
-#lets-connect {
+#lets-connect h2 {
   text-align: center;
+  color: black;
 }
 
 /* Media queries to handle various device widths */
