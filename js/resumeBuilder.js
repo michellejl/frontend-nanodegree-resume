@@ -23,8 +23,8 @@ var bio = {
       [HTMLmobile, bio.contacts.mobile],
       [HTMLemail, bio.contacts.email],
       [HTMLgithub, bio.contacts.github],
-      [HTMLtwitter, bio.contacts.github],
-      [HTMLlocation, bio.contacts.github]
+      [HTMLtwitter, bio.contacts.twitter],
+      [HTMLlocation, bio.contacts.location]
     ]
     // Adds blog contact information IF it has been provided
     if (bio.contacts.blog) { contactsArray.push([HTMLblog, bio.contacts.blog]) }
@@ -321,6 +321,11 @@ function prependInfo(element, dataArray) {
     }
   }
 }
+
+// Map things
+$('#mapDiv').append(googleMap)
+
+
 
 function displayAll() {
   bio.display()
