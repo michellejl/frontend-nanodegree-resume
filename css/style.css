@@ -250,12 +250,12 @@ span {
 
 #map {
   display: block;
-  height: 100%;
+  height: calc(100% - 50px);
   margin: 0 5%;
 }
 
 #mapDiv {
-  height: 400px;
+  height: 450px;
   width: 100%;
   padding-bottom: 5%;
 }

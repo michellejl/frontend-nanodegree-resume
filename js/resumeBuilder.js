@@ -47,7 +47,7 @@ var bio = {
 }
 
 var education = {
-  school: [
+  schools: [
     {
       name: "Tech Academy",
       location: "Portland, Oregon",
@@ -140,7 +140,7 @@ var education = {
   display: function() {
 
     // Formats and Displays Schools
-    var schoolEducation = education.school
+    var schoolEducation = education.schools
     var formattedSchoolEducation = schoolEducation.map(function(school) {
       // Handles the possibility of multiple majors
       if (school.majors.length > 1) {
